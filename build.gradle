@@ -16,12 +16,19 @@ configurations {
 
 repositories {
     mavenCentral()
+    repositories {
+        maven {
+            url "http://dl.bintray.com/fint/maven"
+        }
+    }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'no.fint:fint-betaling-model:1.0.0-alpha-6'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

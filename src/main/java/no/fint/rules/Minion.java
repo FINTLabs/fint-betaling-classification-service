@@ -1,4 +1,6 @@
-package no.fint;
+package no.fint.rules;
+
+import no.fint.betaling.model.Claim;
 
 public interface Minion {
 

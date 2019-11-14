@@ -1,6 +1,8 @@
 package no.fint;
 
 import lombok.extern.slf4j.Slf4j;
+import no.fint.betaling.model.Claim;
+import no.fint.rules.Minion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;

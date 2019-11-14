@@ -1,5 +1,8 @@
 package no.fint;
 
+import no.fint.betaling.model.Claim;
+import no.fint.betaling.model.ClaimStatus;
+import no.fint.betaling.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -27,10 +30,19 @@ public class Controller {
     @PostMapping("/")
     public void createClaim() {
         Claim claim = new Claim();
-        claim.setId(UUID.randomUUID().toString());
-        claim.setTimestamp(System.currentTimeMillis());
+        claim.setOriginalAmountDue(10000L);
+
+        Customer customer = new Customer();
+        customer.setName("Duck, Donald Donaldo");
+        customer.setEmail("donald@duck.no");
+        customer.setMobile("90909090");
+        claim.setCustomer(customer);
+
+        claim.setClaimStatus(ClaimStatus.STORED);
+
         claim.setClasses(new HashSet<>());
 
+        claim.setTimestamp(System.currentTimeMillis());
         mongoTemplate.insert(claim, collectionName);
     }
 

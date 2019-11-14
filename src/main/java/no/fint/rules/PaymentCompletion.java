@@ -1,5 +1,6 @@
-package no.fint;
+package no.fint.rules;
 
+import no.fint.betaling.model.Claim;
 import org.springframework.stereotype.Service;
 
 @Service
