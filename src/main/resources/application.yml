@@ -5,4 +5,4 @@ spring:
 
 fint:
   betaling:
-    collection: "test"
+    collection: "fake.fintlabs.no"

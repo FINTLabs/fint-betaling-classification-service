@@ -1,8 +1,6 @@
 package no.fint;
 
-import no.fint.betaling.model.Claim;
-import no.fint.betaling.model.ClaimStatus;
-import no.fint.betaling.model.Customer;
+import no.fint.betaling.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -37,6 +35,25 @@ public class Controller {
         customer.setEmail("donald@duck.no");
         customer.setMobile("90909090");
         claim.setCustomer(customer);
+
+        User user = new User();
+        user.setName("Pat, Postmann");
+        Organisation organisation = new Organisation();
+        organisation.setName("Telemark Fylkeskommune");
+        organisation.setOrganisationNumber("999999999");
+        user.setOrganisation(organisation);
+        Organisation organisationUnitSkien = new Organisation();
+        organisationUnitSkien.setName("Skien VGS");
+        organisationUnitSkien.setOrganisationNumber("987654321");
+        Organisation organisationUnitPorsgrunn = new Organisation();
+        organisationUnitPorsgrunn.setName("Porsgrunn VGS");
+        organisationUnitPorsgrunn.setOrganisationNumber("888888888");
+        ArrayList<Organisation> organisationUnits = new ArrayList<>();
+        organisationUnits.add(organisationUnitSkien);
+        organisationUnits.add(organisationUnitPorsgrunn);
+        user.setOrganisationUnits(organisationUnits);
+
+        claim.setCreatedBy(user);
 
         claim.setClaimStatus(ClaimStatus.STORED);
 
