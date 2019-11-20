@@ -1,6 +1,7 @@
 package no.fint.rules;
 
 import no.fint.betaling.model.Claim;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -10,16 +11,32 @@ public class CustomerIdentification implements Minion {
     @Override
     public void classify(Claim claim) {
 
-        //TODO Need to use library for more effective split.
-        // apache commons lang3 StringUtils
-        // string tokenizer
+        Arrays.stream(
+                StringUtils.split(
+                        claim.
+                                getCustomer().
+                                getName().
+                                replaceAll("[^\\w\\s]", "")
+                )
+        )
+                .forEach(name -> {
+                            claim.getClasses().add(StringUtils.trim(name)
+                            );
+                        }
+                );
 
-        StringUtils
-        Arrays.stream(claim.getCustomer().getName().trim().split(","))
-                .forEach(name -> Arrays.stream(name.trim().split("\\s+"))
-                        .forEach(singleName -> claim.getClasses().add(singleName)));
-        Arrays.stream(claim.getCreatedBy().getName().trim().split(","))
-                .forEach(name -> Arrays.stream(name.trim().split("\\s+"))
-                        .forEach(singleName -> claim.getClasses().add(singleName)));
+        Arrays.stream(
+                StringUtils.split(
+                        claim.
+                                getCreatedBy().
+                                getName().
+                                replaceAll("[^\\w\\s]", "")
+                )
+        )
+                .forEach(name -> {
+                            claim.getClasses().add(StringUtils.trim(name)
+                            );
+                        }
+                );
     }
 }
