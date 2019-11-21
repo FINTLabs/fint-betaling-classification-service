@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 public class InvoiceUriIdentification implements Minion {
     @Override
     public void classify(Claim claim) {
-        log.info("Add InvoiceUri: " + claim.getInvoiceUri().toString());
         claim.getClasses().add(claim.getInvoiceUri().toString());
     }
 }

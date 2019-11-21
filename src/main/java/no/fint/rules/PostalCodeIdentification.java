@@ -16,7 +16,6 @@ public class PostalCodeIdentification implements Minion {
 
         if (postalCode != null && postalCode.length() > 0) {
             String postalCodeWithIdentifier = "postal_code: " + postalCode;
-            log.info("Add CustomerAdressPostalCode: " + postalCodeWithIdentifier);
             addClass(claim, postalCodeWithIdentifier);
         }
     }

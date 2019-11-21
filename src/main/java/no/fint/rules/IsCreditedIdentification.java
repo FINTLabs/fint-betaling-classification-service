@@ -16,7 +16,6 @@ public class IsCreditedIdentification implements Minion {
         int numberOfCreditNotes = claim.getCreditedAmount().size();
 
         if (numberOfCreditNotes >0){
-            log.info("Add IsCreditedIdentification: " + creditedClassification);
             addClass(claim, creditedClassification);
         }
     }

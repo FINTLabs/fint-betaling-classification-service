@@ -18,7 +18,6 @@ public class ProductTotalSumdentification implements Minion {
         for (OrderLine orderLine : claim.getOrderLines()){
             totalSum = totalSum + orderLine.sum();
         }
-        log.info("Add OrderLinesTotalSum: " + totalSum.toString());
         addClass(claim, "total_sum_of_items: " + totalSum.toString());
     }
 

@@ -15,7 +15,6 @@ public class OrganisationNumberIdentification implements Minion {
         String organisationNumer = claim.getCreatedBy().getOrganisation().getOrganisationNumber();
 
         if (organisationNumer != null && organisationNumer.length() > 0) {
-            log.info("Add organisation number: " + organisationNumer);
             addClass(claim, "creater_organisation_number: " + organisationNumer.toLowerCase());
         }
     }

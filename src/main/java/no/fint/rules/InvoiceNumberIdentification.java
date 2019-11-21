@@ -12,7 +12,6 @@ public class InvoiceNumberIdentification implements Minion {
     @Override
     public void classify(Claim claim) {
 
-        log.info("Add InvoiceNumber: " + claim.getInvoiceNumber());
         addClass(claim,  claim.getInvoiceNumber());
     }
 }

@@ -17,7 +17,6 @@ public class CreatedDateIdentification implements Minion {
 
         LocalDate date = claim.getCreatedDate();
         if (date != null) {
-            log.info("Add CreatedDate: " + date.toString());
             addClass(claim, date.toString());
         }
     }

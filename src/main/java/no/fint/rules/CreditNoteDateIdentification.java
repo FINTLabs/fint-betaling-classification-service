@@ -18,7 +18,6 @@ public class CreditNoteDateIdentification implements Minion {
         claim.getCreditedAmount().forEach(creditNote -> {
                     LocalDate date = creditNote.getDate();
                     if (date != null) {
-                        log.info("Add CreditNoteDate: " + date.toString());
                         addClass(claim, date.toString());
                     }
                 }

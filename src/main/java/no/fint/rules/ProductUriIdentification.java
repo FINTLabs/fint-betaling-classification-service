@@ -20,7 +20,6 @@ public class ProductUriIdentification implements Minion {
         orderLines.stream()
                 .filter(orderLine -> orderLine.getItemUri() != null && orderLine.getItemUri().toString().length() > 0)
                 .forEach( orderLine -> {
-            log.info("Add OrderLineURI: " + orderLine.getItemUri().toString());
             addClass(claim, orderLine.getItemUri().toString());
         });
     }

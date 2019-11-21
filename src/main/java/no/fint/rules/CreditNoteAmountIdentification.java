@@ -15,7 +15,6 @@ public class CreditNoteAmountIdentification implements Minion {
         claim.getCreditedAmount().forEach(creditNote -> {
                     String amount = creditNote.getAmount().toString();
                     if (amount.length() > 0) {
-                        log.info("Add CreditNoteAmount: " + "creditedAmount: " + amount);
                         addClass(claim, "creditedAmount: " + amount);
                     }
                 }

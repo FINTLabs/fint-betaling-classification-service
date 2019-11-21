@@ -20,7 +20,6 @@ public class ProductPriceIdentification implements Minion {
         orderLines.stream()
                 .filter(orderLine -> orderLine.getItemPrice() != null && orderLine.getItemPrice().toString().length() > 0)
                 .forEach(orderLine -> {
-                    log.info("Add OrderLineURI: " + orderLine.getItemPrice().toString());
                     addClass(claim, "single_product_price: " + orderLine.getItemPrice().toString());
                 });
     }

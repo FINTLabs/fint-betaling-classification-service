@@ -15,7 +15,6 @@ public class PostalAddressIdentification implements Minion {
         String postalAddres = claim.getCustomer().getPostalAddress();
 
         if (postalAddres != null && postalAddres.length() > 0) {
-            log.info("Add CustomerAdressPostalLine: " + postalAddres);
             addClass(claim, postalAddres);
         }
     }

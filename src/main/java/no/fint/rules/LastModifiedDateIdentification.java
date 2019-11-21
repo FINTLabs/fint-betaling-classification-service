@@ -16,7 +16,6 @@ public class LastModifiedDateIdentification implements Minion {
 
         LocalDate date = claim.getLastModifiedDate();
         if (date != null) {
-            log.info("Add LastModifiedDate: " + date.toString());
             addClass(claim, date.toString());
         }
     }

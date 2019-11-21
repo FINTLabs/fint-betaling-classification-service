@@ -18,7 +18,6 @@ public class DueDateIdentification implements Minion {
         LocalDate date = claim.getPaymentDueDate();
 
         if (date != null) {
-            log.info("Add PaymentDueDate: " + date.toString());
             addClass(claim, date.toString());
         }
     }

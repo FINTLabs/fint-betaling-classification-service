@@ -17,14 +17,11 @@ public class PaymentStatusIdentification implements Minion {
     public void classify(Claim claim) {
 
         String status = claim.getClaimStatus().getClaimStatus();
-        log.info("Add Status: " + ClaimStatus.STORED.toString());
         addClass(claim ,ClaimStatus.STORED.toString());
 
-        log.info("Add Status: " + status);
         addClass(claim, status);
 
         if (claim.getClaimStatus() == ClaimStatus.PAID) {
-            log.info("Add Status: " + ClaimStatus.SENT.toString());
             addClass(claim, ClaimStatus.SENT.toString());
         }
     }

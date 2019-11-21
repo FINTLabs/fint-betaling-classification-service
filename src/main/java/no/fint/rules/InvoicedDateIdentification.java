@@ -16,7 +16,6 @@ public class InvoicedDateIdentification implements Minion {
 
         LocalDate date = claim.getInvoiceDate();
         if (date != null) {
-            log.info("Add InvoicedDate: " + date.toString());
             addClass(claim, date.toString());
         }
     }

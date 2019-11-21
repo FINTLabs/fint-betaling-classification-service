@@ -24,7 +24,6 @@ public class OrganisationUnitNumberIdentification implements Minion {
         organisationUnits.stream()
                 .filter(obj -> Objects.nonNull(obj) && obj.getOrganisationNumber() != null && obj.getOrganisationNumber().length() > 0)
                 .forEach(unit -> {
-                            log.info("Add organisation unit number: " + unit.getOrganisationNumber());
                             addClass(claim, "organisation_unit_number: " + unit.getOrganisationNumber());
                         }
                 );

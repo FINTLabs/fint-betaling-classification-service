@@ -13,7 +13,6 @@ public class RequestedNumberOfDaysToPaymentIdentification implements Minion {
     public void classify(Claim claim) {
         String days = claim.getRequestedNumberOfDaysToPaymentDeadline();
         if (days != null && days.length() > 0) {
-            log.info("Add RequestetNumberOfDaysToPaymentDeadline: " + days);
             addClass(claim, "requested_number_of_days_to_payment_deadline: " + days);
         }
     }

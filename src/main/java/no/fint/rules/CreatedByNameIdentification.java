@@ -21,7 +21,6 @@ public class CreatedByNameIdentification implements Minion {
                     )
             )
                     .forEach(name -> {
-                                log.info("Add Name: " + StringUtils.trim(name));
                                 claim.getClasses().add(StringUtils.trim(name)
                                 );
                             }

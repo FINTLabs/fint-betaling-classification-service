@@ -18,7 +18,6 @@ public class PostalCityIdentification implements Minion {
         String postalCity = claim.getCustomer().getCity();
 
         if (postalCity != null && postalCity.length() > 0) {
-            log.info("Add CustomerAdressPostalCity: " + postalCity);
             addClass(claim, postalCity);
         }
     }

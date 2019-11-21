@@ -15,7 +15,6 @@ public class CreditNoteCommentIdentification implements Minion {
         claim.getCreditedAmount().forEach(creditNote -> {
             String comment = creditNote.getComment();
             if (comment!= null && comment.length()>0){
-                    log.info("Add CreditNoteIdComment: " + comment.trim().toLowerCase());
                     addClass(claim, comment.trim().toLowerCase());
             }
                 }
