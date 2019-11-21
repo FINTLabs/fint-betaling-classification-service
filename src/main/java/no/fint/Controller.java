@@ -65,6 +65,9 @@ public class Controller {
         customer.setName("Duck, Donald Donaldo");
         customer.setEmail("donald@duck.no");
         customer.setMobile("90909090");
+        customer.setPostalAddress("FakturaVeien 19B");
+        customer.setCity("InkassoByen");
+        customer.setPostalCode("6660");
         claim.setCustomer(customer);
 
         User user = new User();
@@ -140,6 +143,5 @@ public class Controller {
 
         mongoTemplate.updateMulti(query, update, collectionName);
     }
-
 
 }
