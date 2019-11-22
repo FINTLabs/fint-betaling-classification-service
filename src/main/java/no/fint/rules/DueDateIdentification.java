@@ -5,9 +5,8 @@ import no.fint.betaling.model.Claim;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
-import static no.fint.utils.AddClass.addClass;
+import static no.fint.utils.Utils.addClass;
 
 @Service
 @Slf4j

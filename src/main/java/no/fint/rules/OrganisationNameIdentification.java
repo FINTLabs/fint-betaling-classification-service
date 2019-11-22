@@ -2,10 +2,9 @@ package no.fint.rules;
 
 import lombok.extern.slf4j.Slf4j;
 import no.fint.betaling.model.Claim;
-import no.fint.betaling.model.ClaimStatus;
 import org.springframework.stereotype.Service;
 
-import static no.fint.utils.AddClass.addClass;
+import static no.fint.utils.Utils.addClass;
 
 @Service
 @Slf4j

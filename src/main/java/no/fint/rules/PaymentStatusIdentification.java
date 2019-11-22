@@ -5,9 +5,7 @@ import no.fint.betaling.model.Claim;
 import no.fint.betaling.model.ClaimStatus;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.ThreadLocalRandom;
-
-import static no.fint.utils.AddClass.addClass;
+import static no.fint.utils.Utils.addClass;
 
 @Service
 @Slf4j

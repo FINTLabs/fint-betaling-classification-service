@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
-import static no.fint.utils.AddClass.addClass;
+import static no.fint.utils.Utils.addClass;
 
 @Service
 @Slf4j
