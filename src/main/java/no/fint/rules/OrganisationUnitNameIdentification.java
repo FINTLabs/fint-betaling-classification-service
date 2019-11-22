@@ -17,13 +17,10 @@ public class OrganisationUnitNameIdentification implements Minion {
     public void classify(Claim claim) {
         //Todo Needs to be updated to new model, current model doesnt say what organisation is the invoice sender
 
-        List<Organisation> organisationUnits = claim.getCreatedBy().getOrganisationUnits();
+        Organisation organisationUnit = claim.getOrganisationUnit();
 
-        organisationUnits.stream()
-                .filter(obj -> Objects.nonNull(obj) && obj.getName() != null && obj.getName().length() > 0)
-                .forEach(unit -> {
-                            addClass(claim, unit.getName());
-                        }
-                );
+        if (organisationUnit.getName() != null && organisationUnit.getName().length() >0){
+            addClass(claim, organisationUnit.getName());
+        }
     }
 }

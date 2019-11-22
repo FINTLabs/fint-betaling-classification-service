@@ -12,6 +12,9 @@ public class InvoiceNumberIdentification implements Minion {
     @Override
     public void classify(Claim claim) {
 
-        addClass(claim,  claim.getInvoiceNumber());
+        claim.getInvoiceNumbers().forEach(invoiceNumber -> {
+            if (invoiceNumber != null && invoiceNumber.length() > 0)
+                addClass(claim,  invoiceNumber);
+        });
     }
 }

@@ -13,7 +13,7 @@ public class IsCreditedIdentification implements Minion {
     public void classify(Claim claim) {
 
         final String creditedClassification = "credited";
-        int numberOfCreditNotes = claim.getCreditedAmount().size();
+        int numberOfCreditNotes = claim.getCreditNotes().size();
 
         if (numberOfCreditNotes >0){
             addClass(claim, creditedClassification);

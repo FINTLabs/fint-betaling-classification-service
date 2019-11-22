@@ -16,10 +16,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 public class Controller {
@@ -36,7 +35,7 @@ public class Controller {
         claim.setOriginalAmountDue(10000L);
         claim.setOrgId("Test Org-Id");
         claim.setOrderNumber("OrderNumber123");
-        claim.setInvoiceNumber("InvoiceNumber456");
+        claim.setInvoiceNumbers(Stream.of("invoice number 456123", "invoice number 985313").collect(Collectors.toSet()));
         claim.setInvoiceDate(LocalDate.now());
         claim.setPaymentDueDate(LocalDate.of(2019, 11, 29));
         claim.setCreatedDate(LocalDate.of(2019, 1, 1));
@@ -55,7 +54,7 @@ public class Controller {
         creditNote2.setComment("Krediterte feil første gangen");
         creditNotes.add(creditNote);
         creditNotes.add(creditNote2);
-        claim.setCreditedAmount(creditNotes);
+        claim.setCreditNotes(creditNotes);
 
         claim.setAmountDue(99999L);
         claim.setOriginalAmountDue(555555L);
@@ -87,9 +86,15 @@ public class Controller {
         organisationUnits.add(organisationUnitPorsgrunn);
         user.setOrganisationUnits(organisationUnits);
         claim.setCreatedBy(user);
+        claim.setOrganisationUnit(organisationUnitSkien);
 
         try {
-            claim.setPrincipalUri(new URI("www.telemarkfk.no"));
+            Principal principal = new Principal();
+            principal.setCode("912391239");
+            principal.setDescription("Principal");
+            principal.setLineitems(null);
+            principal.setUri(new URI("www.telemarkfk.no"));
+            claim.setPrincipal(principal);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -99,28 +104,36 @@ public class Controller {
             e.printStackTrace();
         }
 
-        ArrayList<OrderLine> orderLines = new ArrayList<>();
-        OrderLine orderLine = new OrderLine();
-        orderLine.setDescription("En datamaskin");
-        orderLine.setItemPrice(2000L);
-        orderLine.setNumberOfItems(1L);
+        ArrayList<OrderItem> orderItems = new ArrayList<>();
+        OrderItem orderItem = new OrderItem();
+        orderItem.setDescription("frontendnavn En datamaskin");
+        Lineitem lineItem = new Lineitem();
+        lineItem.setItemCode("123321");
+        lineItem.setItemPrice(2000L);
+        lineItem.setTaxrate(25L);
+        lineItem.setDescription("Offisielt navn MACBOOK pro");
         try {
-            orderLine.setItemUri(new URI("www.datamaskin.no/ny"));
+            lineItem.setUri(new URI("www.datamaskin.no/ny"));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        OrderLine orderLine2 = new OrderLine();
-        orderLine2.setDescription("Noe annet");
-        orderLine2.setItemPrice(50L);
-        orderLine2.setNumberOfItems(3L);
+        orderItem.setLineitem(lineItem);
+        orderItem.setItemQuantity(1L);
+        OrderItem orderItem2 = new OrderItem();
+        orderItem2.setDescription("frontendnavn noe annet");
+        Lineitem lineItem2 = new Lineitem();
+        lineItem2.setItemCode("321123");
+        lineItem2.setItemPrice(500L);
+        lineItem2.setTaxrate(25L);
+        lineItem2.setDescription("Offisielt navn DATAMUS COOL");
         try {
-            orderLine2.setItemUri(new URI("www.noeannet.com/give"));
+            lineItem2.setUri(new URI("www.mus.no/ny"));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        orderLines.add(orderLine);
-        orderLines.add(orderLine2);
-        claim.setOrderLines(orderLines);
+        orderItem2.setLineitem(lineItem2);
+        orderItem2.setItemQuantity(1L);
+        claim.setOrderItems(orderItems);
         claim.setClaimStatus(ClaimStatus.PAID);
         claim.setClasses(new HashSet<>());
         claim.setTimestamp(System.currentTimeMillis());

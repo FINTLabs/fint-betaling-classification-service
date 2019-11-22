@@ -15,15 +15,11 @@ import static no.fint.utils.Utils.addClass;
 public class OrganisationUnitNumberIdentification implements Minion {
     @Override
     public void classify(Claim claim) {
-        //Todo Needs to be updated to new model, current model doesnt say what organisation is the invoice sender
 
-        List<Organisation> organisationUnits = claim.getCreatedBy().getOrganisationUnits();
+        Organisation organisationUnit = claim.getOrganisationUnit();
 
-        organisationUnits.stream()
-                .filter(obj -> Objects.nonNull(obj) && obj.getOrganisationNumber() != null && obj.getOrganisationNumber().length() > 0)
-                .forEach(unit -> {
-                            addClass(claim, "organisation_unit_number: " + unit.getOrganisationNumber());
-                        }
-                );
+        if (organisationUnit.getOrganisationNumber() != null && organisationUnit.getOrganisationNumber().length() >0){
+            addClass(claim, organisationUnit.getOrganisationNumber());
+        }
     }
 }

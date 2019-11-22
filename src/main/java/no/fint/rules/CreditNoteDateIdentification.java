@@ -14,7 +14,7 @@ public class CreditNoteDateIdentification implements Minion {
     @Override
     public void classify(Claim claim) {
 
-        claim.getCreditedAmount().forEach(creditNote -> {
+        claim.getCreditNotes().forEach(creditNote -> {
                     LocalDate date = creditNote.getDate();
                     if (date != null) {
                         addClass(claim, date.toString());

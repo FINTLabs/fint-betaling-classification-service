@@ -12,7 +12,7 @@ public class CreditNoteCommentIdentification implements Minion {
     @Override
     public void classify(Claim claim) {
 
-        claim.getCreditedAmount().forEach(creditNote -> {
+        claim.getCreditNotes().forEach(creditNote -> {
             String comment = creditNote.getComment();
             if (comment!= null && comment.length()>0){
                     addClass(claim, comment.trim().toLowerCase());
